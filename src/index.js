@@ -13,7 +13,6 @@ const refs = {
 
 refs.inputSearch.addEventListener('input', debounce(handleQuerySearch, DEBOUNCE_DELAY));
 
-
 function handleQuerySearch(e) {
   e.preventDefault();
 
@@ -33,7 +32,7 @@ function fetchQuerySearchCountries(inputQuery) {
     .then(items => {
       if (items.length > 10) {
         Notify.info('Too many matches found. Please enter a more specific name.', {
-          timeout: 5000,
+          timeout: 1500,
           showOnlyTheLastOne: true,
         });
       } else if (items.length >= 2 && items.length <= 10) {
@@ -50,7 +49,7 @@ function fetchQuerySearchCountries(inputQuery) {
       resetMarkup(refs.infoCountry);
       resetMarkup(refs.listCountry);
       Notify.failure('Oops, there is no country with that name', {
-        timeout: 5000,
+        timeout: 1500,
         showOnlyTheLastOne: true,
       });
     })
